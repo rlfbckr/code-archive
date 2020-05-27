@@ -1,2 +1,2 @@
 # code-archive
-examples, demos, sippets
+examples, demos, sippets for teaching purpose
