@@ -1,3 +1,3 @@
-# classic
+# classics
 
 almost algorithical standards
