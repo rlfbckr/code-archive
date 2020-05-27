@@ -10,7 +10,7 @@ let covid_data;
 
 
 let show_deaths = 0;
-let block_size = 12; // 100 x 100 pixel
+let block_size = 20; // 100 x 100 pixel
 // covid api
 // https://apify.com/covid-19l
 
@@ -27,21 +27,7 @@ function setup() {
 
 }
 
-function drawBox(x, y, size, amount) {
-   strokeWeight(1);
-  if (size * size == amount) {
-    // box ist voll also komplett ausfüllen
-    noStroke();
-    fill(255);
-    rect(x, y, block_size, block_size);
-  } else {
-    // box ist noch nicht voll; also die pixel einzelnd zeichnen...
-    stroke(255);
-    for (let i = 0; i<amount;i++) {
-       point(x+ (i%block_size),y+int(i/block_size));
-    }
-  }
-}
+
 
 function draw() {
   background(0);
@@ -57,7 +43,7 @@ function draw() {
   if (sum_shown < show_deaths) {
     let x = int(show_deaths / (block_size * block_size)) % int(windowWidth / block_size) * block_size;
     let y =  int(int(show_deaths / (block_size * block_size)) / int(windowWidth / block_size)) * block_size;
-     drawBox(x,y, block_size, (show_deaths - sum_shown));
+    drawBox(x,y, block_size, (show_deaths - sum_shown));
   }
   
   
@@ -76,14 +62,27 @@ function draw() {
   text(show_deaths, windowWidth / 2, windowHeight / 2);
 }
 
+function drawBox(x, y, size, amount) {
+  strokeWeight(1);
+  if (size * size == amount) {
+    // box ist voll also komplett ausfüllen
+    noStroke();
+    fill(255);
+    rect(x, y, block_size, block_size);
+  } else {
+    // box ist noch nicht voll; also die pixel einzelnd zeichnen...
+    stroke(255);
+    for (let i = 0; i<amount;i++) {
+       point(x+ (i%block_size),y+int(i/block_size));
+    }
+  }
+}
 
 function loadData() {
   covid_data = loadJSON(url, processData);
 }
 
 function processData() {
-
-  print(millis() + " loading done: ");
   let sum_infected = 0;
   let sum_deceased = 0;
   for (let i = 0; i < Object.keys(covid_data).length; i++) {
@@ -92,7 +91,7 @@ function processData() {
   }
   infected_last = infected;
   infected = sum_infected;
-
+  print(millis() + " loading done: "+ (deceased-deceased_last)+ " new deaths");
   deceased_last = deceased;
   deceased = sum_deceased;
 
