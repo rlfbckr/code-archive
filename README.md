@@ -1,2 +1,2 @@
 # code-archive
-examplex, demos, sippets
+examples, demos, sippets
