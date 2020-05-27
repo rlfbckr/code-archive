@@ -6,7 +6,8 @@ float max_attraction_dist = 150; // je kleinder desto schneller..
 float particle_echo_length = 30; // particle pos history... oder so
 long globel_iterations = 0;
 void setup() {
-  size(2000, 1000, P2D);
+//  size(2000, 1000, P2D);
+  fillscreen(P2D);
   for (int i = 0; i<1000; i++) {
     Particle p = new Particle(i,random(0, width), random(0, height));
     particles.add(p); // aufs array schmeissen...

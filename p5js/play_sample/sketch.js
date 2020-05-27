@@ -1,13 +1,13 @@
 let osc;
-let freq = 100;
+let freq = 440;
 let freq_target = 200;
 let fade_speed = 2;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  osc = new p5.Oscillator('sawtooth');
+  osc = new p5.Oscillator('sine');
   osc.freq(freq); 
-  osc.amp(0.5);
+  osc.amp(1.0);
   osc.start();
   textSize(150);
   textAlign(CENTER, CENTER);
@@ -26,7 +26,8 @@ function draw() {
     print("new random frequency");
     freq_target = random(100,500);
   }
-  //osc.freq(freq); 
+  osc.freq(freq); 
   fill(0);
+
   text(freq+" Hz", windowWidth / 2, windowHeight / 2);
 }
