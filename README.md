@@ -7,5 +7,5 @@ most things are over here
 ## arduino
 soon
 
-## p5j
+## p5js
 not too much yet
