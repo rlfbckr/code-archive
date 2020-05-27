@@ -32,7 +32,7 @@ function draw() {
       background(255,0,0);
   }
   fill(255)
- textSize(100);
+  textSize(100);
   text(deceased + " total death", windowWidth / 2, windowHeight / 2);
   textSize(30);
   text((deceased-deceased_first) + " death since you opened this site", (windowWidth / 2), (windowHeight / 2)+100);
