@@ -1,6 +1,11 @@
 let w = 12;
 let h = 19;
 
+/*
+   http://www.medienkunstnetz.de/werke/schotter/
+*/
+
+
 function setup() {
   createCanvas(520, 800);
   rectMode(CENTER);
