@@ -1,5 +1,5 @@
 # code-archive
-a wild collection of code examples, demos, tools and sippets that I have collected over the years for teaching purpose.
+a wild collection of code examples, demos, tools and snippets that I have collected over the years for teaching purpose.
 
 ## processing
 most things are over here
