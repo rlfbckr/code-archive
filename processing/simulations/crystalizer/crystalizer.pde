@@ -24,6 +24,7 @@ boolean addseed = false;
 boolean gui = true;
 boolean restart = false;
 boolean clear = false;
+boolean disable_callbacks = false;
 
 ArrayList toadd = new ArrayList();
 static int RECT = 0;
@@ -52,7 +53,7 @@ float COLOR_BRT_TO = 255;
 
 int type_offset_x = 0;
 int type_offset_y = 0;
-
+int preset_selected = 0;
 int counter = 0;
 ArrayList branches = new ArrayList();
 

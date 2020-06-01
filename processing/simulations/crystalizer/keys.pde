@@ -28,10 +28,3 @@ void keyReleased() {
     clear = true;
   }
 }
-
-void controlEvent(ControlEvent theEvent) {
-  if (theEvent.getController().getName().equals("MODE")) {
-    MODE = (int)theEvent.getController().getValue();
-    println("MODE "+MODE);
-  }
-}

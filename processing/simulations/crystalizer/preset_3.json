@@ -1,29 +1,29 @@
 {
-  "/PRESET": {"value": 0},
+  "/PRESET": {"value": 3},
   "/COLOR_HUE_FROM": {
     "min": 0,
     "max": 255,
-    "value": 255
+    "value": 30.600000381469727
   },
   "/COLOR_SAT_TO": {
     "min": 0,
     "max": 255,
-    "value": 0
+    "value": 255
   },
   "/STEP": {
     "min": 1,
-    "max": 30,
-    "value": 3.5
+    "max": 10,
+    "value": 6.89939022064209
   },
   "/COLOR_SAT_FROM": {
     "min": 0,
     "max": 255,
-    "value": 0
+    "value": 255
   },
   "/MAXDEPTH": {
     "min": 1,
     "max": 100,
-    "value": 30
+    "value": 57.442073822021484
   },
   "/COLOR_BRT_TO": {
     "min": 0,
@@ -34,12 +34,12 @@
   "/ANGLE": {
     "min": 1,
     "max": 90,
-    "value": 90
+    "value": 5.612804889678955
   },
   "/COLOR_HUE_TO": {
     "min": 0,
     "max": 255,
-    "value": 255
+    "value": 223.3800048828125
   },
   "/COLOR_BRT_FROM": {
     "min": 0,
@@ -49,11 +49,11 @@
   "/MAXTRIES": {
     "min": 1,
     "max": 50,
-    "value": 6
+    "value": 8.320121765136719
   },
   "/ANGELCHANGE": {
     "min": 0.5,
-    "max": 90,
+    "max": 5,
     "value": 1.100000023841858
   }
 }

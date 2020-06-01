@@ -8,8 +8,8 @@ void initGUIControls() {
   cp5.setColorActive(color(90, 95, 95));
 
   cp5.addSlider("ANGLE", 1, 90, 20, 120, 328, 30).setFont(font);
-  cp5.addSlider("STEP", 1, 10, 20, 160, 328, 30).setFont(font);
-  cp5.addSlider("ANGELCHANGE", 0.5, 5, 20, 200, 328, 30).setFont(font);
+  cp5.addSlider("STEP", 1, 30, 20, 160, 328, 30).setFont(font);
+  cp5.addSlider("ANGELCHANGE", 0.5, 90, 20, 200, 328, 30).setFont(font);
   cp5.addSlider("MAXDEPTH", 1, 100, 20, 240, 328, 30).setFont(font);
   cp5.addSlider("MAXTRIES", 1, 50, 20, 280, 328, 30).setFont(font);
 
@@ -28,25 +28,72 @@ void initGUIControls() {
     .addItem("RECT", RECT)
     .addItem("CIRCLE", CIRCLE)
     .addItem("TYPE", TYPE)
-
     .setFont(font)
     .close()
     ;
 
-  cp5.addButton("savedefaults", 10, 20, 600, 150, 30).setCaptionLabel("save default").setFont(font);
-  cp5.addButton("loaddefaults", 10, 190, 600, 150, 30).setCaptionLabel("load default").setColorBackground(color(0, 100, 50)).setFont(font);
+  cp5.addButton("LOAD_PRESET", 10, 20, 640, 150, 30).setFont(font);
+  cp5.addButton("SAVE_PRESET", 10, 190, 640, 150, 30).setColorBackground(color(0, 100, 50)).setFont(font);
 
-  cp5.addButton("saveseta", 10, 20, 640, 150, 30).setCaptionLabel("save setA").setFont(font);
-  cp5.addButton("loadseta", 10, 190, 640, 150, 30).setCaptionLabel("load setA").setColorBackground(color(0, 100, 50)).setFont(font);
-
-  cp5.addButton("savesetb", 10, 20, 680, 150, 30).setCaptionLabel("save setB").setFont(font);
-  cp5.addButton("loadsetb", 10, 190, 680, 150, 30).setCaptionLabel("load setB").setColorBackground(color(0, 100, 50)).setFont(font);
-
-
+  cp5.addScrollableList("PRESET")
+    .setPosition(20, 600)
+    .setSize(200, 9*30)
+    .setBarHeight(30)
+    .setItemHeight(30)
+    .addItem("DEFAULT", 0)
+    .addItem("PRESET 1", 1)
+    .addItem("PRESET 2", 2)
+    .addItem("PRESET 3", 3)
+    .addItem("PRESET 4", 4)
+    .addItem("PRESET 5", 5)
+    .addItem("PRESET 6", 6)
+    .addItem("PRESET 7", 7)
+    .addItem("PRESET 8", 8)
+    .setFont(font)
+    .close()
+    ;
   cp5.setAutoDraw(false);
-  loaddefaults();
+  preset_selected = 0;
+  LOAD_PRESET();
+}
+void controlEvent(ControlEvent theEvent) {
+  if (disable_callbacks) return;
+  if (theEvent.getController().getName().equals("MODE")) {
+    MODE = (int)theEvent.getController().getValue();
+    println("MODE selected = "+MODE);
+  }
+  if (theEvent.getController().getName().equals("PRESET")) {
+    preset_selected =  (int)theEvent.getController().getValue();
+    println("preset_slot "+preset_selected);
+    /*
+    pause = true;
+     disable_callbacks = true;
+     LOAD_PRESET();
+     pause = false;
+     disable_callbacks = false;
+     restart = true;
+     */
+  }
 }
 
+void SAVE_PRESET() {
+  String filename = "default.json";
+  if (preset_selected>=1) {
+    filename = "preset_"+preset_selected+".json";
+  }
+  cp5.saveProperties((filename));
+}
+void LOAD_PRESET() {
+  String filename = "default.json";
+  if (preset_selected>=1) {
+    filename = "preset_"+preset_selected+".json";
+  }
+  println("loading preset[ "+preset_selected+" ]: "+filename);
+  cp5.loadProperties(filename);
+  //cp5.getProperties().print();
+  delay(100);
+  restart = true;
+}
 
 void drawGui() {
   fill(0, 255, 255);
@@ -66,40 +113,4 @@ void drawGui() {
   colorMode(RGB);
   cp5.draw();
   hint(ENABLE_DEPTH_TEST);
-}
-
-
-
-void saveseta( ) {
-  println("saveseta");
-  cp5.saveProperties(("setA.json"));
-}
-
-void loadseta( ) {
-  cp5.loadProperties("setA.json");
-  cp5.getProperties().print();
-  delay(100);
-  restart = true;
-}
-void savesetb( ) {
-  println("savesetb");
-  cp5.saveProperties("setB.json" );
-}
-
-void loadsetb( ) {
-  cp5.loadProperties(("setB.json"));
-  cp5.getProperties().print();
-  delay(100);
-  restart = true;
-}
-
-void savedefaults( ) {
-  cp5.saveProperties("default.json");
-}
-
-void loaddefaults( ) {
-  cp5.loadProperties(("default.json"));
-  cp5.getProperties().print();
-  delay(100);
-  restart = true;
 }
