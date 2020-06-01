@@ -13,7 +13,7 @@ void keyReleased() {
     if (gui) {
       cursor();
     } else {
-    noCursor();
+      noCursor();
     }
   }
   if (key == 'i') {
@@ -27,12 +27,11 @@ void keyReleased() {
     restart = false;
     clear = true;
   }
-
 }
 
 void controlEvent(ControlEvent theEvent) {
-  if (theEvent.getName().equals("MODE")) {
-    MODE = (int)theEvent.getGroup().getValue();
+  if (theEvent.getController().getName().equals("MODE")) {
+    MODE = (int)theEvent.getController().getValue();
     println("MODE "+MODE);
   }
 }

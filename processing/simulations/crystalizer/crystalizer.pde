@@ -75,7 +75,7 @@ void setup() {
   RANGE_Y = (height / 2) - 0;
   background(255);
   pg.smooth(8);
-  setupGUIControls();
+  initGUIControls();
 
   // reset canvas
   pg.beginDraw();
