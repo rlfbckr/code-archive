@@ -5,6 +5,11 @@
     "max": 255,
     "value": 255
   },
+  "/CHANCE_TURN": {
+    "min": 0,
+    "max": 50,
+    "value": 36.280487060546875
+  },
   "/COLOR_SAT_TO": {
     "min": 0,
     "max": 255,
@@ -23,7 +28,7 @@
   "/MAXDEPTH": {
     "min": 1,
     "max": 100,
-    "value": 30
+    "value": 41.14329147338867
   },
   "/COLOR_BRT_TO": {
     "min": 0,
@@ -41,6 +46,11 @@
     "max": 255,
     "value": 255
   },
+  "/CHANCE_RIGHT_LEFT": {
+    "min": 0,
+    "max": 50,
+    "value": 50
+  },
   "/COLOR_BRT_FROM": {
     "min": 0,
     "max": 255,
@@ -55,5 +65,10 @@
     "min": 0.5,
     "max": 90,
     "value": 1.100000023841858
+  },
+  "/SCALE": {
+    "min": 1,
+    "max": 10,
+    "value": 1
   }
 }
