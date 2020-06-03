@@ -1,22 +1,32 @@
-int rand = 100;
+int anazahl = 500;
+float speed = 0.0001;
 
 void setup() {
   size(1000, 1000, P2D); // opengl
+  ellipseMode(CENTER);
+  smooth(8);
 }
 
 void draw() {
   background(255);
-  float t = map(mouseX, 0, width, -5, 5);
-  curveTightness(t);
+  curveTightness(map(mouseX, 0, width, -5, 5));
+  speed = map(mouseY, 0, height, 0.001, 0.00001);
   curveDetail(20);
-  strokeWeight(2.5);
   noFill();
-  stroke(0,48);
+  stroke(50, 48);
   beginShape();
-  for (int i = 0; i<10000; i++) {
-    float x = noise(millis()*0.0001, i*10, 0)*width;
-    float y = noise(millis()*0.0001, i*10, 1)*height;
+  long now = millis();
+  for (int i = 0; i<anazahl; i++) {
+    float x = noise(now*speed, i*10, 0)*width;
+    float y = noise(now*speed, i*10, 1)*height;
     curveVertex(x, y);
   }
   endShape(CLOSE);
+  noStroke();
+  fill(0);
+  for (int i = 0; i<anazahl; i++) {
+    float x = noise(now*speed, i*10, 0)*width;
+    float y = noise(now*speed, i*10, 1)*height;
+    ellipse(x, y, 7, 7);
+  }
 }
