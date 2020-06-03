@@ -22,9 +22,12 @@ void draw() {
 
 class Particle {
   PVector pos;
-
+  color c;
+  float size = 1;
   Particle(float x, float y) {
     pos = new PVector(x, y);
+    c = color(random(255), random(255), random(255));
+    size = random(3,30);
   }
 
   void update() {
@@ -39,8 +42,8 @@ class Particle {
       if (this != other_p) {
         float dist = dist(new_x, new_y, other_p.pos.x, other_p.pos.y);
         if (dist < 10) {
-          other_p.pos.x = other_p.pos.x+random(-60,60);
-          other_p.pos.y = other_p.pos.y+random(-60,60);
+          other_p.pos.x = other_p.pos.x+random(-260, 260);
+          other_p.pos.y = other_p.pos.y+random(-260, 260);
           collision = true;
           break;
         }
@@ -55,7 +58,7 @@ class Particle {
   }
 
   void draw() {
-    fill(0, 40);
-    ellipse(pos.x, pos.y, 10, 10);
+    fill(c);
+    ellipse(pos.x, pos.y, size, size);
   }
 }
