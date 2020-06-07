@@ -29,7 +29,7 @@ class Particle {
       Attractor a = attractors.get(i);
       float dist_zum_attraktor = dist(pos.x, pos.y, a.pos.x, a.pos.y);
       // die attraktion nimmt proportional zur enfernung ab..
-      float attraction = map(dist_zum_attraktor, 0, max_attraction_dist, 0.91, 0.991);
+      float attraction = map(dist_zum_attraktor, 0, max_attraction_dist, 0.999, 0.991);
 
       if (dist_zum_attraktor < max_attraction_dist) {
         float new_x = (pos.x*attraction) + (a.pos.x*(1-attraction));
