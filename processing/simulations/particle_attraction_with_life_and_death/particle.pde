@@ -4,8 +4,8 @@ class Particle {
   PVector pos = new PVector(random(width), random(height));
   int random_alpha = 0;
   int id = -1;
-  public Particle(float x, float y) {
 
+  public Particle(float x, float y) {
     pos.x =x;
     pos.y =y;
     random_alpha = (int)random(128, 255);
@@ -16,23 +16,16 @@ class Particle {
   void update() {
     // hier wird das verhalten des partikels beschrieben.
     // brownien movement!
-    // pos.x +=random(-1,1);
-    // pos.y +=random(-1,1);
-    // if (globel_iterations % 50 == 0) {
-
     if (echo.size() < particle_echo_length) {
       echo.add(new PVector(pos.x, pos.y));
     } else if (echo.size()>= particle_echo_length) {
       echo.remove(0);
       echo.add( new PVector(pos.x, pos.y));
     }
-    //if (id == 0) println(echo.size());
-    //}
-
     for (int i = 0; i< attractors.size(); i++) {
       Attractor a = attractors.get(i);
       float dist_zum_attraktor = dist(pos.x, pos.y, a.pos.x, a.pos.y);
-      if (dist_zum_attraktor < 2) {
+      if (dist_zum_attraktor < dead_dist) {
         dead = true;
       }
       // die attraktion nimmt proportional zur enfernung ab..
@@ -43,8 +36,7 @@ class Particle {
         float new_y = (pos.y*attraction) + (a.pos.y*(1-attraction));
         boolean collisons = false;
         // collision detection...
-        // das hier mache es dann sehr langsam
- 
+        // das hier macht es dann  langsam
         for (int j = 0; j< particles.size(); j++) {
           Particle other = particles.get(j);
           if (this != other) { // alle ausser ich
@@ -53,7 +45,6 @@ class Particle {
             }
           }
         }
-       
         if (collisons == false) {
           pos.x= new_x;
           pos.y= new_y;
@@ -67,9 +58,7 @@ class Particle {
 
 
   void draw() {
-
     //draw echo
-
     noFill();
     stroke(60, 128);
     beginShape();

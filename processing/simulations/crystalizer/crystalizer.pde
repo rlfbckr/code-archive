@@ -47,7 +47,6 @@ int AGENTS = 10;
 int CHANCE_TURN = 2; // higher values less chance
 int CHANCE_RIGHT_LEFT = 25;
 
-
 int RANGE = 200;
 int RANGE_X = 400;
 int RANGE_Y = 400;
