@@ -8,9 +8,10 @@ int steps = 40;
 
 void setup() {
   size(1000, 1000, P2D);
+//  fullScreen(P2D);
   smooth(8);
   //  blendMode(ADD);
-  blendMode(LIGHTEST); // add up overlapping lines - looks good
+  blendMode(LIGHTEST); // add up overlapping lines - looks cool
 }
 
 
