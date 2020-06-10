@@ -9,13 +9,16 @@ ArrayList<Attractor> attractors = new ArrayList();
 float attractor_move_speed = 0.00001; // geschwindigkeit der attraktoren
 float max_attraction_dist =500; // je kleinder desto schneller..
 float particle_echo_length = 60; // particle pos history... oder so
-long globel_iterations = 0;
 int max_particle = 1500;
 int dead_dist = 2;
 int current_particle = 0;
+float min_acceleration = 0.995;
+float max_acceleration = 0.999;
 
+Range range_acceleration;
 boolean DEBUG = false;
 boolean CLEAR = true;
+boolean RESET = false;
 
 ControlP5 cp5;
 
@@ -30,7 +33,7 @@ void setup() {
   ellipseMode(CENTER);
   textSize(20);
   frameRate(100);
-  blendMode(LIGHTEST); // add up overlapping lines - looks cool
+  // blendMode(LIGHTEST); // add up overlapping lines - looks cool
   createGUI();
 }
 
@@ -39,17 +42,16 @@ void draw() {
   if (CLEAR) {
     background(0);
   }
-
   for (int i = 0; i< attractors.size(); i++) {
     Attractor a = attractors.get(i);
     a.update(); // berechne neue attraktor position...
     if (DEBUG) a.draw();
   }
-  
+
   Iterator pitr = particles.iterator(); 
   while (pitr.hasNext()) { 
     Particle p = (Particle)pitr.next(); 
-    if (p.dead) {
+    if (p.dead || RESET) {
       pitr.remove();
       current_particle--;
     }
@@ -69,5 +71,7 @@ void draw() {
   if (DEBUG) {
     drawGUI();
   }
-  globel_iterations++;
+  if (RESET) {
+    RESET = false;
+  }
 }

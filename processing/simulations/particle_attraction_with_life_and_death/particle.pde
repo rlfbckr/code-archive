@@ -29,7 +29,7 @@ class Particle {
         dead = true;
       }
       // die attraktion nimmt proportional zur enfernung ab..
-      float attraction = map(dist_zum_attraktor, 0, max_attraction_dist, 0.9999, 0.993);
+      float attraction = map(dist_zum_attraktor, 0, max_attraction_dist, max_acceleration, min_acceleration);
 
       if (dist_zum_attraktor < max_attraction_dist) {
         float new_x = (pos.x*attraction) + (a.pos.x*(1-attraction));

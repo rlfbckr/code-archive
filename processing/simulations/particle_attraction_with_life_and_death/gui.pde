@@ -12,6 +12,19 @@ void createGUI() {
   cp5.addSlider("particle_echo_length", 1, 100, 20, 130, 350, 30).setFont(font);
   cp5.addSlider("max_particle", 1, 5000, 20, 170, 350, 30).setFont(font);
   cp5.addSlider("dead_dist", 1, 50, 20, 210, 350, 30).setFont(font);
+
+
+  range_acceleration = cp5.addRange("acceleration")
+    .setBroadcast(false) 
+    .setPosition(20, 250)
+    .setSize(350, 30)
+    .setHandleSize(10)
+    .setRange(1.0, 0.99)
+    .setRangeValues(min_acceleration, max_acceleration)
+    .setBroadcast(true)
+    .setFont(font)
+    ;
+
   cp5.setAutoDraw(false);
 }
 
@@ -23,4 +36,12 @@ void drawGUI() {
 
   cp5.draw();
   hint(ENABLE_DEPTH_TEST);
+}
+
+
+void controlEvent(ControlEvent theControlEvent) {
+  if (theControlEvent.isFrom("acceleration")) {
+    min_acceleration = theControlEvent.getController().getArrayValue(0);
+    max_acceleration = theControlEvent.getController().getArrayValue(1);
+  }
 }
