@@ -7,7 +7,7 @@
 #include <U8x8lib.h>
 #endif
 
-String apiKey = "key";
+String apiKey = "key"; // dont use my api key
 //the city you want the weather for
 String location = "Bremen,DE";
 int status = WL_IDLE_STATUS;
