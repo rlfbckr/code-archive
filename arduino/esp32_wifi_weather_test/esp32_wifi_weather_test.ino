@@ -7,7 +7,7 @@
 #include <U8x8lib.h>
 #endif
 
-String apiKey = "key"; // dont use my api key
+String apiKey = "5aa90cdbed5ef7be8425759d1c11eca1";
 //the city you want the weather for
 String location = "Bremen,DE";
 int status = WL_IDLE_STATUS;
@@ -115,14 +115,7 @@ void loop() {
 
       String tempc =  doc["list"][0]["main"]["temp"];
       temp = String(tempc);
-      /*
-          String nextWeather0 = root["list"][0]["weather"][0]["main"];
-          String nextWeatherTime1 = root["list"][1]["dt_txt"];
-          String nextWeather1 = root["list"][1]["weather"][0]["main"];
-          String nextWeatherTime2 = root["list"][2]["dt_txt"];
-          String nextWeather2 = root["list"][2]["weather"][0]["main"];
-      */
-      // Print values.
+
       Serial.print("temp : ");
       Serial.println(temp);
     }
