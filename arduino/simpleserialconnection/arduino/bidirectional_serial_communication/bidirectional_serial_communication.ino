@@ -7,9 +7,9 @@ int potipin = A1;
 int servopin = 5;
 
 SerialReceiver receiver = SerialReceiver();
-
-
 Servo myservo;
+
+
 void setup() {
   Serial.begin(115200);
   myservo.attach(servopin);
@@ -17,6 +17,7 @@ void setup() {
 }
 
 void loop() {
+
   messageCompleted();
   Serial.print(analogRead(lightpin));
   Serial.print(" ");
